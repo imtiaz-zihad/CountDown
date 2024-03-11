@@ -28,10 +28,15 @@ public class MainActivity extends AppCompatActivity {
         start= findViewById(R.id.start);
         editTextText= findViewById(R.id.editTextText);
 
+
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (timer != null) {
+                    timer.cancel();
+                }
                 startTime();
+
                 
             }
         });
@@ -39,12 +44,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void startTime() {
 
+
+
+
         if (editTextText.length() == 0) {
 
             editTextText.setError("please give your time");
         } else {
+
+
         String timerset = editTextText.getText().toString();
         long timeValue = Long.parseLong(timerset);
+
 
 
 
@@ -68,8 +79,13 @@ public class MainActivity extends AppCompatActivity {
                     MediaPlayer alarm = MediaPlayer.create(MainActivity.this, R.raw.sound);
                     alarm.start();
 
+
+
                 }
             }.start();
+
+
         }
     }
+
 }
